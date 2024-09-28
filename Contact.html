@@ -52,39 +52,54 @@
 									<li>Lethbridge, Alberta</li>
 									
 								</ul>
-							</section>
-									<section id="five" class="wrapper style2 special fade">
-					<div class="container">
-						
-											<section id="three" class="wrapper style1 fade-up">
-						<div class="inner">
-							<h2>Get in touch</h2>
-							<p>I am looking forward to hearing from you!</p>
-							<div class="split style1">
-								<section>
-									<form method="POST" action="https://formsubmit.co/setgodigital@gmail.com">
-										<div class="fields">
-											<div class="field half">
-												<input type="text" name="name" id="name" placeholder="Your Name"/>
-											</div>
-											<div class="field half">
-												<input type="text" name="email" id="email" placeholder="Your Email"/>
-											</div>
-											<div class="field">
-												<textarea name="message" id="message" rows="5" placeholder="Your message for me..."></textarea>
-											</div>
+							<section>
+								<h3>Form</h3>
+								<form method="post" action="https://formsubmit.co/setgodigital@gmail.com" />
+									<div class="row gtr-uniform gtr-50">
+										<div class="col-6 col-12-xsmall">
+											<input type="text" name="name" id="name" value="" placeholder="Name" />
 										</div>
-										<ul class="actions">
-											<li><a href="" class="button submit">Send Message</a></li>
-										</ul>
-									</form>
-								</section>
-						
-							</div>
-						</div>
-					</section>
-					</div>
-				</section>
+										<div class="col-6 col-12-xsmall">
+											<input type="email" name="email" id="email" value="" placeholder="Email" />
+										</div>
+										<div class="col-12">
+											<select name="category" id="category">
+												<option value="">- Category -</option>
+												<option value="1">Consulting</option>
+												<option value="1">Branding</option>
+												<option value="1">Lead Generation</option>
+												<option value="1">Other</option>
+											</select>
+										</div>
+										<div class="col-4 col-12-medium">
+											<input type="radio" id="priority-low" name="priority" checked>
+											<label for="priority-low">Low Priority</label>
+										</div>
+										<div class="col-4 col-12-medium">
+											<input type="radio" id="priority-normal" name="priority">
+											<label for="priority-normal">Normal Priority</label>
+										</div>
+										<div class="col-4 col-12-medium">
+											<input type="radio" id="priority-high" name="priority">
+											<label for="priority-high">High Priority</label>
+										</div>
+								
+										<div class="col-6 col-12-medium">
+											<input type="checkbox" id="human" name="human" checked>
+											<label for="human">I am a human and not a robot</label>
+										</div>
+										<div class="col-12">
+											<textarea name="message" id="message" placeholder="Enter your message" rows="6"></textarea>
+										</div>
+										<div class="col-12">
+											<ul class="actions">
+												<li><input type="submit" value="Send Message" class="primary" /></li>
+												<li><input type="reset" value="Reset" /></li>
+											</ul>
+										</div>
+									</div>
+								</form>
+							</section>
 
 					</div>
 				</div>
