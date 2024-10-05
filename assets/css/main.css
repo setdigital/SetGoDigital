@@ -176,21 +176,7 @@ html,
 body {
 	background: #1c1d26;
 }
-.containerservice {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
-}
-.box {
-    background-color: 1c1d26;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 20px;
-    width: 30%; /* Adjust width as needed for your layout */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin: 10px; /* Adds spacing between boxes */
-    transition: transform 0.3s;
-}
+
 
 
 body.is-preload *,
