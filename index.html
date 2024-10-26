@@ -256,6 +256,16 @@
 										</div>
 									</div>
 								</form>
+		<script>
+function validateHuman() {
+    const humanCheckbox = document.getElementById('human');
+    if (!humanCheckbox.checked) {
+        alert('Please confirm that you are a human.');
+        return false; // Prevent form submission
+    }
+    return true; // Allow form submission
+}
+</script>
 							</section>
 
 		<!-- Footer -->
