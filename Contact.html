@@ -63,18 +63,21 @@
 									
 								</ul>
 							<section>
-								<h3>Form</h3>
-								<form method="post" action="https://formsubmit.co/setgodigital@gmail.com" />
-									<div class="row gtr-uniform gtr-50">
+							<h3 align="center">Form</h3>
+								<form action="https://submit-form.com/PGsv337bX" onsubmit="return validateHuman()">
+									<div style="width: 100%; max-width: 600px; margin: 0 auto;">
 										<div class="col-6 col-12-xsmall">
 											<input type="text" name="name" id="name" value="" placeholder="Name" />
 										</div>
 										<div class="col-6 col-12-xsmall">
 											<input type="email" name="email" id="email" value="" placeholder="Email" />
 										</div>
+					
 								
-								
-										
+										<div class="col-6 col-12-medium">
+											<input type="checkbox" id="human" name="human">
+											<label for="human">I am a human and not a robot</label>
+										</div>
 										<div class="col-12">
 											<textarea name="message" id="message" placeholder="Enter your message" rows="6"></textarea>
 										</div>
@@ -86,6 +89,16 @@
 										</div>
 									</div>
 								</form>
+		<script>
+function validateHuman() {
+    const humanCheckbox = document.getElementById('human');
+    if (!humanCheckbox.checked) {
+        alert('Please confirm that you are a human.');
+        return false; // Prevent form submission
+    }
+    return true; // Allow form submission
+}
+</script>
 							</section>
 
 					</div>
