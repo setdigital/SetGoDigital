@@ -16,6 +16,10 @@
 
   gtag('config', 'G-89L8K1CVKC');
 </script>
+	<head>
+  <script src="https://www.google.com/recaptcha/enterprise.js?render=6LfQ3XEqAAAAAMOG4eJCxz9hbTjiVQZfZ5OqDety"></script>
+  <!-- Your code -->
+</head>
 	<title>Home by HTML5 UP</title>
 	<link rel="icon" href="images/SetgoDigitalBlacbackground.png" type="image/png">
 	<meta charset="utf-8" />
@@ -250,7 +254,12 @@
 										</div>
 										<div class="col-12">
 											<ul class="actions">
-												<li><input type="submit" value="Send Message" class="primary" /></li>
+												<li><button class="g-recaptcha"
+    data-sitekey="6LfQ3XEqAAAAAMOG4eJCxz9hbTjiVQZfZ5OqDety"
+    data-callback='onSubmit'
+    data-action='submit'>
+  Submit
+</button></li>
 												<li><input type="reset" value="Reset" /></li>
 											</ul>
 										</div>
@@ -265,6 +274,12 @@ function validateHuman() {
     }
     return true; // Allow form submission
 }
+			<!-- Replace the variables below. -->
+<script>
+  function onSubmit(token) {
+    document.getElementById("demo-form").submit();
+  }
+</script>
 </script>
 							</section>
 
