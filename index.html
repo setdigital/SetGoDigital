@@ -26,6 +26,16 @@
 	<noscript>
 		<link rel="stylesheet" href="assets/css/noscript.css" />
 	</noscript>
+
+  <script src="https://www.google.com/recaptcha/enterprise.js?render=6LcjwHEqAAAAAN0VwWUBDwEiLb1FtgBSRqpxEC9G"></script>
+  <!-- Your code -->
+	<!-- Replace the variables below. -->
+<script>
+  function onSubmit(token) {
+    document.getElementById("demo-form").submit();
+  }
+</script>
+
 </head>
 
 <body class="is-preload landing">
@@ -233,7 +243,7 @@
 		<!-- Five -->
 				<section>
 							<h3 align="center">Form</h3>
-								<form action="https://submit-form.com/PGsv337bX" onsubmit="return validateHuman()">
+								<form action="https://submit-form.com/PGsv337bX">
 									<div style="width: 100%; max-width: 600px; margin: 0 auto;">
 										<div class="col-6 col-12-xsmall">
 											<input type="text" name="name" id="name" value="" placeholder="Name" />
@@ -243,16 +253,21 @@
 										</div>
 					
 								
-										<div class="col-6 col-12-medium">
-											<input type="checkbox" id="human" name="human">
-											<label for="human">I am a human and not a robot</label>
-										</div>
+										
 										<div class="col-12">
 											<textarea name="message" id="message" placeholder="Enter your message" rows="6"></textarea>
 										</div>
 										<div class="col-12">
 											<ul class="actions">
-												<li><input type="submit" value="Send Message" class="primary" /></li>
+												<li>
+													<button class="g-recaptcha"
+    													data-sitekey="6LcjwHEqAAAAAN0VwWUBDwEiLb1FtgBSRqpxEC9G"
+													    data-callback='onSubmit'
+													    data-action='submit'>
+													  Submit
+													</button>
+												</li>
+       
 												<li><input type="reset" value="Reset" /></li>
 											</ul>
 										</div>
