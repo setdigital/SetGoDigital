@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+	<!DOCTYPE HTML>
 <!--
 	Landed by HTML5 UP
 	html5up.net | @ajlkn
@@ -26,9 +26,6 @@
 	<noscript>
 		<link rel="stylesheet" href="assets/css/noscript.css" />
 	</noscript>
-<!-- Google reCAPTCHA -->
-  <script src="https://www.google.com/recaptcha/enterprise.js?render=6LfQ3XEqAAAAAMOG4eJCxz9hbTjiVQZfZ5OqDety"></script>
-  
 </head>
 
 <body class="is-preload landing">
@@ -236,7 +233,7 @@
 		<!-- Five -->
 				<section>
 							<h3 align="center">Form</h3>
-								<form id="demo-form" action="https://submit-form.com/PGsv337bX" method="POST">
+								<form action="https://submit-form.com/PGsv337bX" onsubmit="return validateHuman()">
 									<div style="width: 100%; max-width: 600px; margin: 0 auto;">
 										<div class="col-6 col-12-xsmall">
 											<input type="text" name="name" id="name" value="" placeholder="Name" />
@@ -255,23 +252,21 @@
 										</div>
 										<div class="col-12">
 											<ul class="actions">
-												<li> <button class="g-recaptcha" 
-                        data-sitekey="6LfQ3XEqAAAAAMOG4eJCxz9hbTjiVQZfZ5OqDety" 
-                        data-callback="onSubmit" 
-                        data-action="submit">Send Message</button></li>
+												<li><input type="submit" value="Send Message" class="primary" /></li>
 												<li><input type="reset" value="Reset" /></li>
 											</ul>
 										</div>
 									</div>
 								</form>
-					<script src="https://www.google.com/recaptcha/enterprise.js?render=6LfQ3XEqAAAAAMOG4eJCxz9hbTjiVQZfZ5OqDety"></script>
-    <script>
-        function onSubmit(token) {
-            document.getElementById("demo-form").submit();
-        }
-    </script>
-	
-
+		<script>
+function validateHuman() {
+    const humanCheckbox = document.getElementById('human');
+    if (!humanCheckbox.checked) {
+        alert('Please confirm that you are a human.');
+        return false; // Prevent form submission
+    }
+    return true; // Allow form submission
+}
 </script>
 							</section>
 
