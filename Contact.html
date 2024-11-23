@@ -62,22 +62,42 @@
 									<li>Lethbridge, Alberta</li>
 									
 								</ul>
-							<section>
+		<section>
 							<h3 align="center">Form</h3>
-								<form action="https://submit-form.com/PGsv337bX" onsubmit="return validateHuman()">
+								<form action="https://submit-form.com/PGsv337bX" onsubmit="return validateHoneypot()">
 									<div style="width: 100%; max-width: 600px; margin: 0 auto;">
 										<div class="col-6 col-12-xsmall">
 											<input type="text" name="name" id="name" value="" placeholder="Name" />
 										</div>
 										<div class="col-6 col-12-xsmall">
 											<input type="email" name="email" id="email" value="" placeholder="Email" />
+											
 										</div>
+										
+																		
+										
+										<div class="col-6 col-12-xsmall">
+												
+												<select name="purpose" id="purpose">
+													<option value="" disabled selected>Purpose Of Contact</option>
+													<option value="Paid Ads">Paid Ads</option>
+													<option value="Consulting">Project Consulting</option>
+													<option value="Video Editing">Video Editing</option>
+													<option value="Branding">Branding</option>
+													<option value="Website">Website</option>
+													<option value="Other">Other</option>
+												</select>
+										</div>
+										<div class="col-6 col-12-xsmall">
+											<input type="text" name="timeline" id="timeline" placeholder="Enter your preferred timeline (e.g., 'ASAP', '1 week', etc.)" />
+										</div>
+
 					
 								
-										<div class="col-6 col-12-medium">
-											<input type="checkbox" id="human" name="human">
-											<label for="human">I am a human and not a robot</label>
-										</div>
+										 <div style="display: none;">
+										        <label for="honeypot">Leave this field blank</label>
+										        <input type="text" name="honeypot" id="honeypot" />
+										    </div>
 										<div class="col-12">
 											<textarea name="message" id="message" placeholder="Enter your message" rows="6"></textarea>
 										</div>
@@ -89,16 +109,18 @@
 										</div>
 									</div>
 								</form>
-		<script>
-function validateHuman() {
-    const humanCheckbox = document.getElementById('human');
-    if (!humanCheckbox.checked) {
-        alert('Please confirm that you are a human.');
-        return false; // Prevent form submission
-    }
-    return true; // Allow form submission
-}
-</script>
+												<script>
+													function validateHoneypot() {
+										    const honeypot = document.getElementById('honeypot').value;
+										    if (honeypot) {
+										        alert("Bot detected!");
+										        return false; // Prevent submission
+										    }
+										    return true; // Allow submission
+										}
+										
+												</script>
+									
 							</section>
 
 					</div>
