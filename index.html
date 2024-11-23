@@ -278,13 +278,22 @@
 										</div>
 									</div>
 								</form>
-												<script>
+													<script>
+												 // Track the time when the form is loaded
+													const formLoadTime = Date.now();
+													
 													function validateHoneypot() {
 										    const honeypot = document.getElementById('honeypot').value;
 										    if (honeypot) {
 										        alert("Bot detected!");
 										        return false; // Prevent submission
 										    }
+										// Check if the form is submitted too quickly (e.g., less than 5 seconds)
+										      const formSubmitTime = Date.now();
+										      if (formSubmitTime - formLoadTime < 5000) {
+										        alert("Form submitted too quickly. Are you a bot?");
+										        return false; // Prevent submission if submitted too quickly
+										      }
 										    return true; // Allow submission
 										}
 										
