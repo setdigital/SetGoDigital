@@ -94,10 +94,13 @@
 
 					
 								
-										 <div style="display: none;">
-										        <label for="honeypot">Leave this field blank</label>
-										        <input type="text" name="honeypot" id="honeypot" />
+										  <div style="display: none;">
+										        <label for="honeypot_dynamic">Leave this field blank</label>
+										        <input type="text" name="honeypot_dynamic" id="honeypot_dynamic" autocomplete="off" />
 										    </div>
+										
+										    <!-- Pre-filled Validation Field -->
+										    <input type="hidden" name="hidden_check" id="hidden_check" value="do-not-change" />
 										<div class="col-12">
 											<textarea name="message" id="message" placeholder="Enter your message" rows="6"></textarea>
 										</div>
@@ -110,24 +113,46 @@
 									</div>
 								</form>
 												<script>
-												 // Track the time when the form is loaded
-													const formLoadTime = Date.now();
-													
-													function validateHoneypot() {
-										    const honeypot = document.getElementById('honeypot').value;
-										    if (honeypot) {
-										        alert("Bot detected!");
-										        return false; // Prevent submission
-										    }
-										// Check if the form is submitted too quickly (e.g., less than 5 seconds)
-										      const formSubmitTime = Date.now();
-										      if (formSubmitTime - formLoadTime < 5000) {
-										        alert("Form submitted too quickly. Are you a bot?");
-										        return false; // Prevent submission if submitted too quickly
-										      }
-										    return true; // Allow submission
-										}
-										
+												  // Track when the form was loaded
+												    const formLoadTime = Date.now();
+												    let interacted = false;
+												
+												    // Monitor user interaction
+												    document.querySelectorAll('textarea, input[type="text"], input[type="email"]').forEach((field) => {
+												        field.addEventListener('input', () => (interacted = true));
+												    });
+												
+												    function validateForm() {
+												        // Honeypot Field Check
+												        const honeypot = document.getElementById('honeypot_dynamic').value;
+												        if (honeypot) {
+												            alert("Bot detected!");
+												            return false; // Prevent submission
+												        }
+												
+												        // Timing Check
+												        const formSubmitTime = Date.now();
+												        if (formSubmitTime - formLoadTime < 5000) {
+												            alert("Form submitted too quickly. Are you a bot?");
+												            return false; // Prevent submission
+												        }
+												
+												        // Pre-filled Field Check
+												        const hiddenCheck = document.getElementById('hidden_check').value;
+												        if (hiddenCheck !== "do-not-change") {
+												            alert("Bot detected by hidden field validation!");
+												            return false; // Prevent submission
+												        }
+												
+												        // Interaction Check
+												        if (!interacted) {
+												            alert("No interaction detected. Are you a bot?");
+												            return false; // Prevent submission
+												        }
+												
+												        return true; // Allow form submission
+												    }
+																						
 												</script>
 									
 							</section>
