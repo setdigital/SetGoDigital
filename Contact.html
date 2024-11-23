@@ -63,99 +63,83 @@
 									
 								</ul>
 		<section>
-							<h3 align="center">Form</h3>
-								<form action="https://submit-form.com/PGsv337bX" onsubmit="return validateHoneypot()">
-									<div style="width: 100%; max-width: 600px; margin: 0 auto;">
-										<div class="col-6 col-12-xsmall">
-											<input type="text" name="name" id="name" value="" placeholder="Name" />
-										</div>
-										<div class="col-6 col-12-xsmall">
-											<input type="email" name="email" id="email" value="" placeholder="Email" />
-											
-										</div>
-										
-																		
-										
-										<div class="col-6 col-12-xsmall">
-												
-												<select name="purpose" id="purpose">
-													<option value="" disabled selected>Purpose Of Contact</option>
-													<option value="Paid Ads">Paid Ads</option>
-													<option value="Consulting">Project Consulting</option>
-													<option value="Video Editing">Video Editing</option>
-													<option value="Branding">Branding</option>
-													<option value="Website">Website</option>
-													<option value="Other">Other</option>
-												</select>
-										</div>
-										<div class="col-6 col-12-xsmall">
-											<input type="text" name="timeline" id="timeline" placeholder="Enter your preferred timeline (e.g., 'ASAP', '1 week', etc.)" />
-										</div>
+    <h3 align="center">Form</h3>
+    <form action="https://submit-form.com/PGsv337bX" onsubmit="return validateHoneypot()">
+        <div style="width: 100%; max-width: 600px; margin: 0 auto;">
+            <div class="col-6 col-12-xsmall">
+                <input type="text" name="name" id="name" value="" placeholder="Name" />
+            </div>
+            <div class="col-6 col-12-xsmall">
+                <input type="email" name="email" id="email" value="" placeholder="Email" />
+            </div>
+            <div class="col-6 col-12-xsmall">
+                <select name="purpose" id="purpose">
+                    <option value="" disabled selected>Purpose Of Contact</option>
+                    <option value="Paid Ads">Paid Ads</option>
+                    <option value="Consulting">Project Consulting</option>
+                    <option value="Video Editing">Video Editing</option>
+                    <option value="Branding">Branding</option>
+                    <option value="Website">Website</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="col-6 col-12-xsmall">
+                <input type="text" name="timeline" id="timeline" placeholder="Enter your preferred timeline (e.g., 'ASAP', '1 week', etc.)" />
+            </div>
 
-					
-								
-										  <div style="display: none;">
-										        <label for="honeypot_dynamic">Leave this field blank</label>
-										        <input type="text" name="honeypot_dynamic" id="honeypot_dynamic" autocomplete="off" />
-										    </div>
-										
-										    <!-- Pre-filled Validation Field -->
-										    <input type="hidden" name="hidden_check" id="hidden_check" value="do-not-change" />
-										<div class="col-12">
-											<textarea name="message" id="message" placeholder="Enter your message" rows="6"></textarea>
-										</div>
-										<div class="col-12">
-											<ul class="actions">
-												<li><input type="submit" value="Send Message" class="primary" /></li>
-												<li><input type="reset" value="Reset" /></li>
-											</ul>
-										</div>
-									</div>
-								</form>
-												<script>
-												  // Track when the form was loaded
-												    const formLoadTime = Date.now();
-												    let interacted = false;
-												
-												    // Monitor user interaction
-												    document.querySelectorAll('textarea, input[type="text"], input[type="email"]').forEach((field) => {
-												        field.addEventListener('input', () => (interacted = true));
-												    });
-												
-												    function validateForm() {
-												        // Honeypot Field Check
-												        const honeypot = document.getElementById('honeypot_dynamic').value;
-												        if (honeypot) {
-												            alert("Bot detected!");
-												            return false; // Prevent submission
-												        }
-												
-												        // Timing Check
-												        const formSubmitTime = Date.now();
-												        if (formSubmitTime - formLoadTime < 5000) {
-												            alert("Form submitted too quickly. Are you a bot?");
-												            return false; // Prevent submission
-												        }
-												
-												        // Pre-filled Field Check
-												        const hiddenCheck = document.getElementById('hidden_check').value;
-												        if (hiddenCheck !== "do-not-change") {
-												            alert("Bot detected by hidden field validation!");
-												            return false; // Prevent submission
-												        }
-												
-												        // Interaction Check
-												        if (!interacted) {
-												            alert("No interaction detected. Are you a bot?");
-												            return false; // Prevent submission
-												        }
-												
-												        return true; // Allow form submission
-												    }
-																						
-												</script>
-									
-							</section>
+            <!-- Honeypot Field (hidden from users) -->
+            <div style="display: none;">
+                <label for="honeypot">Leave this field blank</label>
+                <input type="text" name="honeypot" id="honeypot" />
+            </div>
+
+            <!-- Form Token Field (hidden from users) -->
+            <div style="display: none;">
+                <input type="text" name="form_token" id="form_token" value="<?php echo uniqid(); ?>" />
+            </div>
+
+            <div class="col-12">
+                <textarea name="message" id="message" placeholder="Enter your message" rows="6"></textarea>
+            </div>
+            <div class="col-12">
+                <ul class="actions">
+                    <li><input type="submit" value="Send Message" class="primary" /></li>
+                    <li><input type="reset" value="Reset" /></li>
+                </ul>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        // Track the time when the form is loaded
+        const formLoadTime = Date.now();
+
+        function validateHoneypot() {
+            // Check the honeypot field
+            const honeypot = document.getElementById('honeypot').value;
+            if (honeypot) {
+                alert("Bot detected!");
+                return false; // Prevent submission
+            }
+
+            // Check if the form is submitted too quickly (e.g., less than 5 seconds)
+            const formSubmitTime = Date.now();
+            if (formSubmitTime - formLoadTime < 5000) {
+                alert("Form submitted too quickly. Are you a bot?");
+                return false; // Prevent submission if submitted too quickly
+            }
+
+            // Additional check for form token to prevent CSRF (Cross-Site Request Forgery)
+            const formToken = document.getElementById('form_token').value;
+            if (!formToken) {
+                alert("Form token missing. Submission invalid.");
+                return false; // Prevent submission if token is missing
+            }
+
+            return true; // Allow submission
+        }
+    </script>
+</section>
 
 					</div>
 				</div>
