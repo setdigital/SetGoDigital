@@ -289,10 +289,7 @@
 									                <input type="text" name="honeypot" id="honeypot" />
 									            </div>
 									
-									            <!-- Form Token Field (hidden from users) -->
-									            <div style="display: none;">
-									                <input type="text" name="form_token" id="form_token" value="<?php echo uniqid(); ?>" />
-									            </div>
+									       
 									
 									            <div class="col-12">
 									                <textarea name="message" id="message" placeholder="Enter your message" rows="6"></textarea>
@@ -323,13 +320,7 @@
 									            if (formSubmitTime - formLoadTime < 5000) {
 									                alert("Form submitted too quickly. Are you a bot?");
 									                return false; // Prevent submission if submitted too quickly
-									            }
-									
-									            // Additional check for form token to prevent CSRF (Cross-Site Request Forgery)
-									            const formToken = document.getElementById('form_token').value;
-									            if (!formToken) {
-									                alert("Form token missing. Submission invalid.");
-									                return false; // Prevent submission if token is missing
+									        
 									            }
 									
 									            return true; // Allow submission
