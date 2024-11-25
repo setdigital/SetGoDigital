@@ -284,10 +284,11 @@
 									            </div>
 									
 									            <!-- Honeypot Field (hidden from users) -->
-									            <div style="display: none;">
-									                <label for="honeypot">Leave this field blank</label>
-									                <input type="text" name="honeypot" id="honeypot" />
-									            </div>
+									           
+											<div style="position: absolute; left: -9999px;">
+											    <label for="user_profile">Do not fill this field</label>
+											    <input type="text" name="user_profile" id="user_profile" />
+											</div>
 									
 									       
 									
@@ -309,7 +310,7 @@
 									
 									        function validateHoneypot() {
 									            // Check the honeypot field
-									            const honeypot = document.getElementById('honeypot').value;
+									            const honeypot = document.getElementById('user_profile').value;
 									            if (honeypot) {
 									                alert("Bot detected!");
 									                return false; // Prevent submission
