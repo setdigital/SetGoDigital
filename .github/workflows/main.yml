@@ -34,4 +34,4 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         branch: gh-pages  # Deploy to the gh-pages branch
-        folder: SetGoDigital  # Folder where the built static site is located
+        folder: SetGoDigital/index.html  # Folder where the built static site is located
