@@ -17,16 +17,16 @@ jobs:
     # Step 2: Set up environment variables
     - name: Set up environment variables
       run: |
-        echo "GACODE=${{ secrets.GACODE }}" >> $GITHUB_ENV
-        echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> $GITHUB_ENV
+        echo "GAKEY=${{ secrets.GAKEY }}" >> $GITHUB_ENV
+        echo "CAPTCHA=${{ secrets.CAPTCHA }}" >> $GITHUB_ENV
         echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" >> $GITHUB_ENV
 
     # Step 3: Replace environment variables in HTML
     - name: Replace environment variables in HTML
       run: |
         # Replace placeholders with environment variables in your HTML files
-        sed -i "s|{{GACODE}}|$GACODE|g" path/to/your/index.html
-        sed -i "s|{{DB_PASSWORD}}|$DB_PASSWORD|g" path/to/your/index.html
+        sed -i "s|{{GAKEY}}|$GAKEY|g" path/to/your/index.html
+        sed -i "s|{{CAPTCHA}}|$CAPTCHA|g" path/to/your/index.html
         sed -i "s|{{SECRET_KEY}}|$SECRET_KEY|g" path/to/your/index.html
 
     # Step 4: Deploy to GitHub Pages
