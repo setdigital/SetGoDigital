@@ -2,35 +2,23 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main  # Trigger the workflow on push to the main branch
+    branches: [main]
+
+env: 
+    CHANNEL_Name: InterviewPro
+  
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
+  job1:
+     runs-on: ubuntu-latest
 
-    steps:
-    # Step 1: Checkout the code
-    - name: Checkout the code
-      uses: actions/checkout@v3
+     steps:
+     - name: access secrets
+       run: echo ${{secrets.GAKEY}}
+     - name: access secrets
+       run: echo ${{secrets.CAPTCHA}}
 
-    # Step 2: Set up environment variables
-    - name: Set up environment variables
-      run: |
-        echo "GAKEY=${{ secrets.GAKEY }}" >> $GITHUB_ENV
-        echo "CAPTCHA=${{ secrets.CAPTCHA }}" >> $GITHUB_ENV
-        
-    # Step 3: Replace environment variables in HTML
-    - name: Replace environment variables in HTML
-      run: |
-        # Replace placeholders with environment variables in your HTML files
-        sed -i "s|{{GAKEY}}|$GAKEY|g"  setdigital/SetGoDigital/index.html
-        sed -i "s|{{CAPTCHA}}|$CAPTCHA|g"  setdigital/SetGoDigital/index.html
-        
+   
 
-    # Step 4: Deploy to GitHub Pages
-    - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@v4
-      with:
-        branch: gh-pages  # Deploy to the gh-pages branch
-        folder: setdigital/SetGoDigital  # Folder where the built static site is located
+    
+     
