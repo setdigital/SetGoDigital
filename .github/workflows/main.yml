@@ -19,21 +19,14 @@ jobs:
       run: |
         echo "GAKEY=${{ secrets.GAKEY }}" >> $GITHUB_ENV
         echo "CAPTCHA=${{ secrets.CAPTCHA }}" >> $GITHUB_ENV
-        echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" >> $GITHUB_ENV
-
-        - name: Debug Environment Variables
-      run: |
-    echo "GAKEY=$GAKEY"
-    echo "CAPTCHA=$CAPTCHA"
-    echo "SECRET_KEY=$SECRET_KEY"
-
+        
     # Step 3: Replace environment variables in HTML
     - name: Replace environment variables in HTML
       run: |
         # Replace placeholders with environment variables in your HTML files
         sed -i "s|{{GAKEY}}|$GAKEY|g" setdigital/SetGoDigital/index.html
         sed -i "s|{{CAPTCHA}}|$CAPTCHA|g" setdigital/SetGoDigital/index.html
-        sed -i "s|{{SECRET_KEY}}|$SECRET_KEY|g" setdigital/SetGoDigital/index.html
+        
 
     # Step 4: Deploy to GitHub Pages
     - name: Deploy to GitHub Pages
