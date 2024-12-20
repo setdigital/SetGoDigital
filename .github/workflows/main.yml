@@ -24,8 +24,8 @@ jobs:
     - name: Replace environment variables in HTML
       run: |
         # Replace placeholders with environment variables in your HTML files
-        sed -i "s|{{GAKEY}}|$GAKEY|g" setdigital/SetGoDigital/index.html
-        sed -i "s|{{CAPTCHA}}|$CAPTCHA|g" setdigital/SetGoDigital/index.html
+        sed -i "s|{{GAKEY}}|$GAKEY|g" setdigital/SetGoDigital/blob/main/index.html
+        sed -i "s|{{CAPTCHA}}|$CAPTCHA|g" setdigital/SetGoDigital/blob/main/index.html
         
 
     # Step 4: Deploy to GitHub Pages
@@ -33,4 +33,4 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         branch: gh-pages  # Deploy to the gh-pages branch
-        folder: setdigital/SetGoDigital  # Folder where the built static site is located
+        folder: setdigital/SetGoDigital/blob/main  # Folder where the built static site is located
